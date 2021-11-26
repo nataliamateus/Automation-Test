@@ -1,14 +1,17 @@
 package com.automation.web.pages;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class BasePage {
@@ -142,6 +145,20 @@ public class BasePage {
         waitElementVisibility(element);
     }
 
+    public void TakeScreenShot(String testName){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            String reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath() + "src/test/java/reports/screenshots";
+            File destFile = new File((String) reportDirectory+"/failure_screenshots/"+testName+"_"+formater.format(calendar.getTime())+".png");
+            FileUtils.copyFile(scrFile, destFile);
+            Reporter.log("<a href='"+ destFile.getAbsolutePath() + "'> <img src='"+ destFile.getAbsolutePath() + "' height='100' width='100'/> </a>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Close the web driver.
      */
@@ -152,3 +169,4 @@ public class BasePage {
     }
 
 }
+

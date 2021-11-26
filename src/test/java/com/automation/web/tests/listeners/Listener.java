@@ -1,7 +1,7 @@
 package com.automation.web.tests.listeners;
 
-import com.automation.web.tests.BaseTest;
 import org.apache.log4j.Logger;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -11,7 +11,7 @@ import org.testng.Reporter;
  * Class listeners.
  * @author natalia.mateus
  */
-public class Listener extends BaseTest implements ITestListener  {
+public class Listener implements ITestListener  {
 
     private Logger log = Logger.getLogger(Listener.class);
 
@@ -33,8 +33,6 @@ public class Listener extends BaseTest implements ITestListener  {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        Reporter.log("Execution status..." +result.getStatus());
-        failedTest();
     }
 
     @Override

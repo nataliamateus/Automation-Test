@@ -18,7 +18,6 @@ public class HomePage extends BasePage {
     @FindBy(id = "uniform-selectProductSort")
     private WebElement selectorSortBy;
 
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @FindBy(css = "ul.product_list li.ajax_block_product>*:first-child")
@@ -38,12 +37,11 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Get the Hotel Name selected
+     * Search the item
      */
     public String searchItem(){
         clickElement(searchInput);
         write(searchInput, "dresses");
-        log.info(searchInput.getText());
         clickElement(searchButton);
         return searchInput.getText();
     }

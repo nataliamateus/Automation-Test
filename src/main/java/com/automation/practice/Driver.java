@@ -20,8 +20,7 @@ import java.net.URL;
  */
 public class Driver {
 
-    private WebDriver driver;
-    //private AndroidDriver mobileDriver;
+    public WebDriver driver;
 
     /**
      * Constructor.
@@ -52,8 +51,6 @@ public class Driver {
                 capabilities.setCapability("deviceName", "emulator-5554");
                 capabilities.setCapability("automationName", "UiAutomator2");
                 capabilities.setCapability("browserName", "Chrome");
-                //capabilities.setCapability("chromedriverExecutable","C:\\automationpractice\\src\\main\\resources\\chromedriver_Mobile.exe");
-
                 try {
                     driver = new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
                 } catch (MalformedURLException e) {

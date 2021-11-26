@@ -2,17 +2,24 @@ package com.automation.web.tests;
 
 import com.automation.practice.Driver;
 import com.automation.web.pages.HomePage;
+import com.beust.jcommander.converters.PathConverter;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.Reporter;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 /**
@@ -34,7 +41,7 @@ public class BaseTest {
                 driver.getDriver().manage().window().maximize();
                 break;
 
-            case "chromeSimulated":
+            case "mobile":
                 driver = new Driver(browser);
                 break;
 
@@ -50,22 +57,21 @@ public class BaseTest {
         Home = new HomePage(driver.getDriver(), url);
     }
 
+
+    @AfterMethod(alwaysRun=true)
+    public void catchExceptions(ITestResult result){{
+            if(!result.isSuccess()){
+               Home.TakeScreenShot(result.getName());
+            }
+        }
+    }
+
     @AfterTest(alwaysRun=true)
     public void afterTest() {
         Home.dispose();
     }
 
-    public void failedTest(){
-        File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try{
-            FileUtils.copyDirectory(srcFile, new File("C:\\automationpractice\\src\\test\\java\\reports\\screenshots\\testFailed.jpg"));
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    /**
+   /**
      * Get the home page.
      * @return {@link HomePage}
      */
