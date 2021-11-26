@@ -50,10 +50,10 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun=true)
     public void catchExceptions(ITestResult result){{
-            if(!result.isSuccess()){
-               Home.takeScreenShot(result.getName());
-            }
+        if(!result.isSuccess()){
+            Home.takeScreenShot(result.getName());
         }
+    }
     }
 
     @AfterTest(alwaysRun=true)
@@ -61,7 +61,7 @@ public class BaseTest {
         Home.dispose();
     }
 
-   /**
+    /**
      * Get the home page.
      * @return {@link HomePage}
      */
