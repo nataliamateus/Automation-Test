@@ -28,13 +28,11 @@ public class TestSuite extends BaseTest {
         String productQuantity = shoppingCart.getProductQuantity();
         Assert.assertEquals(productQuantity, "1", "The Product Quantity is incorrect");
 
-        String totalPriceWithoutTaxProducts= shoppingCart.getTotalWithoutTaxProducts();
         String totalPriceProducts = shoppingCart.getTotalPriceProducts();
         PurchasePage purchasePage = shoppingCart.clickOnCheckoutButton();
 
         log.info("4.1 Proceed with the purchase.");
         String totalShippingValue = purchasePage.getTotalShippingValue();
-        String totalPriceWithTax =  purchasePage.getTotalPriceWithTax();
         CreateAccountPage createAccountPage = purchasePage.goToProceedCheckout();
         createAccountPage.createAccount(data.getEmail());
 

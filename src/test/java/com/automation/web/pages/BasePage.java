@@ -145,13 +145,16 @@ public class BasePage {
         waitElementVisibility(element);
     }
 
-    public void TakeScreenShot(String testName){
+    /**
+     * Take Screenshot method.
+     * @param
+     */
+    public void takeScreenShot(String testName){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            String reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath() + "src/test/java/reports/screenshots";
-            File destFile = new File((String) reportDirectory+"/failure_screenshots/"+testName+"_"+formater.format(calendar.getTime())+".png");
+            File destFile = new File((String) "src/test/java/reports/screenshots/"+"/failure_screenshots/"+testName+"_"+formater.format(calendar.getTime())+".png");
             FileUtils.copyFile(scrFile, destFile);
             Reporter.log("<a href='"+ destFile.getAbsolutePath() + "'> <img src='"+ destFile.getAbsolutePath() + "' height='100' width='100'/> </a>");
         } catch (IOException e) {
