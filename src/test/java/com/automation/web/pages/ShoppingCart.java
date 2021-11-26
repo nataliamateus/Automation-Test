@@ -11,8 +11,14 @@ public class ShoppingCart extends BasePage {
     @FindBy(css = "div.layer_cart_product h2")
     private WebElement successMessage;
 
-    @FindBy(css = "div.layer_cart_cart span.ajax_cart_quantity")
+    @FindBy(id = "layer_cart_product_quantity")
     private WebElement amountItems;
+
+    @FindBy(id = "layer_cart_product_price")
+    private WebElement totalPriceWithoutTaxProducts;
+
+    @FindBy(className = "ajax_block_products_total")
+    private WebElement totalPriceProducts;
 
     @FindBy(css = "div.layer_cart_cart div.button-container a.btn-default")
     private WebElement checkoutButton;
@@ -26,19 +32,31 @@ public class ShoppingCart extends BasePage {
         super(pDriver);
     }
 
-
-    public String getSuccessfullyMessage (){
+    public String getSuccessfullyMessage(){
         waitElementVisibility(successMessage);
         log.info(successMessage);
         return successMessage.getText();
     }
 
-    public String getAmountItems (){
+    public String getProductQuantity(){
         waitElementVisibility(amountItems);
+        log.info("Product quantity");
         return amountItems.getText();
     }
 
-    public PurchasePage clickOnCheckoutButton (){
+    public String getTotalWithoutTaxProducts(){
+        log.info("Total Products without shipping");
+        waitElementVisibility(totalPriceWithoutTaxProducts);
+        return totalPriceWithoutTaxProducts.getText();
+    }
+
+    public String getTotalPriceProducts(){
+        log.info("Total Price Products");
+        waitElementVisibility(totalPriceProducts);
+        return totalPriceProducts.getText();
+    }
+
+    public PurchasePage clickOnCheckoutButton(){
         clickElement(checkoutButton);
         return new PurchasePage(getDriver());
     }

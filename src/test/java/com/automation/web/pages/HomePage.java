@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 public class HomePage extends BasePage {
 
@@ -21,7 +18,6 @@ public class HomePage extends BasePage {
     @FindBy(id = "uniform-selectProductSort")
     private WebElement selectorSortBy;
 
-    Select selector = new Select(getDriver().findElement(By.id("selectProductSort")));
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,8 +49,7 @@ public class HomePage extends BasePage {
     }
 
     public void selectProductSortBy(){
-        clickElement(selectorSortBy);
-        selector.selectByValue("price:asc");
+        Select selector = new Select(getDriver().findElement(By.id("selectProductSort")));
     }
 
     public ShoppingCart addTheItemToBuy(){

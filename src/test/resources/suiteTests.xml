@@ -2,13 +2,18 @@
 
 <suite name="example test suite" verbose="1">
 
+	<listeners>
+		<listener class-name="com.automation.web.tests.listeners.Listener"/>
+	</listeners>
+
 	<parameter name="browser" value="chrome"/>
 	<parameter name="url" value="http://automationpractice.com/index.php"/>
 
-	<test name="In User Test">
+	<test name="Chrome">
 		<classes>
 			<class name="com.automation.web.tests.TestSuite"/>
 		</classes>
 	</test>
+
 
 </suite>
