@@ -18,7 +18,7 @@ public class UserData {
         public UserData(){
            firstName = "Tester";
            lastName = "Tester";
-           email=  "userAuto" +  Math.floor(Math.random()*(300-1+1)+600) + "@automation.com";
+           email=  "userAuto" +  Math.floor(Math.random()*(300-1+1)+200) + "@automation.com";
            password = "123456";
            address = "Road Street";
            city = "Phoenix";

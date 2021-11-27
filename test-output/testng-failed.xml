@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Automation Practice Test Suite]">
-  <parameter name="browser" value="mobile"/>
+  <parameter name="browser" value="chrome"/>
   <parameter name="url" value="http://automationpractice.com/index.php"/>
   <listeners>
     <listener class-name="com.automation.web.tests.listeners.Listener"/>
   </listeners>
-  <test thread-count="5" name="mobile(failed)">
+  <test thread-count="5" name="Chrome(failed)">
     <classes>
       <class name="com.automation.web.tests.TestSuite">
         <methods>
@@ -17,5 +17,5 @@
         </methods>
       </class> <!-- com.automation.web.tests.TestSuite -->
     </classes>
-  </test> <!-- mobile(failed) -->
+  </test> <!-- Chrome(failed) -->
 </suite> <!-- Failed suite [Automation Practice Test Suite] -->

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class TestSuite extends BaseTest {
 
     @Test(description = "Suite Test", dataProviderClass = Data.class, dataProvider = "UserData")
-    public void testSearchItem(UserData data) {
+    public void testAutomationPractice(UserData data) {
         log.info("1. Search for an item");
         HomePage homePage = getHomePage();
         homePage.searchItem();
